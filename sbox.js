@@ -1,4 +1,5 @@
 let Timeout = 3 // seconds
+let Silent = false
 
 let LoggedIn = document.getElementsByClassName("username")[0].innerHTML
 
@@ -19,18 +20,23 @@ try {
     }
 
 } catch {}
-console.log(`S&Box Notifier\n\nWelcome ${LoggedIn}!\nCreated by Dwifte`)
+Silent == true ? null : console.log(`S&Box Notifier\n\nWelcome ${LoggedIn}!\nCreated by Dwifte`);
 let Interval = setInterval(() => {
-    let children = Users.children
-    let InRaff = false
+    let children = Users.children;
+    let InRaff = false;
     for (var i = 0; i < children.length; i++) {
         var User = children[i];
         if (User.title == LoggedIn) {
+            
             InRaff = true
         }
     }
     if (InRaff == false) {
-        Enter.click()
+        if (Math.random() < 0.5) { // random-ness, so it doesn't seem like a bot
+            Enter.click();
+        }
+
     }
-    console.log(`Keys remaining: ${Key.innerHTML.substr(-2).trim()}\nTime Remaining: ${Timer.innerHTML.substr(-10).trim()}\nUsers in: ${UsersIn.innerHTML.substr(-4).trim()} \nWatchers: ${Watchers.innerHTML.substr(-4).trim()}\n${LoggedIn} in raffle: ${InRaff}`)
+    Silent == true ? null : console.log(`Keys remaining: ${Key.innerHTML.substr(-2).trim()}\nTime Remaining: ${Timer.innerHTML.substr(-9).trim()}\nUsers in: ${UsersIn.innerHTML.substr(-4).trim()} \nWatchers: ${Watchers.innerHTML.substr(-4).trim()}\n${LoggedIn} in raffle: ${InRaff}`)
+
 }, Timeout * 1000);
