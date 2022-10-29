@@ -32,5 +32,5 @@ let Interval = setInterval(() => {
     if (InRaff == false) {
         Enter.click()
     }
-    console.log(`Keys remaining: ${Key.innerHTML.substr(-2).trim()}\nTime Remaining: ${Timer.innerHTML.substr(-11).trim()}\nUsers in: ${UsersIn.innerHTML.substr(-4).trim()} \nWatchers: ${Watchers.innerHTML.substr(-4).trim()}\n${LoggedIn} in raffle: ${InRaff}`)
+    console.log(`Keys remaining: ${Key.innerHTML.substr(-2).trim()}\nTime Remaining: ${Timer.innerHTML.substr(-10).trim()}\nUsers in: ${UsersIn.innerHTML.substr(-4).trim()} \nWatchers: ${Watchers.innerHTML.substr(-4).trim()}\n${LoggedIn} in raffle: ${InRaff}`)
 }, Timeout * 1000);
