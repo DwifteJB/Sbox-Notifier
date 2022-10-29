@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         S&box Notifier
-// @namespace    http://tampermonkey.net/
-// @version      1
+// @namespace    https://raw.githubusercontent.com/DwifteJB/Sbox-Notifier/main/sbox-tampermonkey.js
+// @version      1.0
 // @description  Notifies and Auto-Joins
 // @author       Dwifte
 // @match        *://asset.party/get/developer/preview
@@ -15,7 +15,7 @@
     let Timeout = 3 // seconds
     let Silent = false
     
-    let DiscordWebhook = null
+    let DiscordWebhook = "https://discord.com/api/webhooks/1035755261996056576/j-XwrzAbBRfBvNPyV1QeDV3jnawSbszMhy5yP-taI2VEPmd0UnpGxdKzBKCwFr4lhI-o"
         
     let LoggedAvatar = document.getElementsByClassName("avatar")[0].src
     let LoggedIn = document.getElementsByClassName("username")[0].innerHTML
