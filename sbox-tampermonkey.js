@@ -7,6 +7,8 @@
 // @match        *://asset.party/get/developer/preview
 // @icon         https://github.com/DwifteJB.png
 // @grant        GM_xmlhttpRequest
+// @updateURL    https://raw.githubusercontent.com/cyprille/tampermonkey-scripts/master/scripts/github-calculate-pr-records.user.js
+// @downloadURL  https://raw.githubusercontent.com/cyprille/tampermonkey-scripts/master/scripts/github-calculate-pr-records.user.js
 // ==/UserScript==
 
 
