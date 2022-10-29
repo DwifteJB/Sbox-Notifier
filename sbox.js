@@ -1,6 +1,9 @@
 let Timeout = 3 // seconds
 let Silent = false
 
+let DiscordWebhook = null
+
+let LoggedAvatar = document.getElementsByClassName("avatar")[0].src
 let LoggedIn = document.getElementsByClassName("username")[0].innerHTML
 
 let Enter = document.getElementsByClassName("button is-large is-primary")[0]
@@ -37,6 +40,61 @@ let Interval = setInterval(() => {
         }
 
     }
-    Silent == true ? null : console.log(`Keys remaining: ${Key.innerHTML.substr(-2).trim()}\nTime Remaining: ${Timer.innerHTML.substr(-9).trim()}\nUsers in: ${UsersIn.innerHTML.substr(-4).trim()} \nWatchers: ${Watchers.innerHTML.substr(-4).trim()}\n${LoggedIn} in raffle: ${InRaff}`)
+    if (DiscordWebhook != null) {
+        try {
+            //`\n${LoggedIn} in raffle: ${InRaff}`
+            let embed = {
+                "username": LoggedIn + " | S&Box Notifier",
+                "avatar_url": LoggedAvatar,
+                "content": null,
+                "embeds": [
+                  {
+                    "title": "Log",
+                    "color": 11923696,
+                    "fields": [
+                      {
+                        "name": "Keys Remaining",
+                        "value": Key.innerHTML.substr(-2).trim(),
+                        "inline": true
+                      },
+                      {
+                        "name": "Time Remaining",
+                        "value": Timer.innerHTML.substr(-10).trim(),
+                        "inline": true
+                      },
+                      {
+                        "name": "Users in raffle",
+                        "value": UsersIn.innerHTML.substr(-4).trim(),
+                        "inline": true
+                      },
+                      {
+                        "name": "Watchers",
+                        "value": Watchers.innerHTML.substr(-4).trim(),
+                        "inline": true
+                      },
+                      {
+                        "name": "InRaffle",
+                        "value": InRaff,
+                        "inline": true
+                      }
+                    ],
+                    "footer": {
+                      "text": "dwifte <3"
+                    },
+                    "thumbnail": {
+                      "url": LoggedAvatar
+                    }
+                  }
+                ],
+                "attachments": []
+            }
+            fetch(DiscordWebhook, {
+                "method":"POST",
+                "headers": {"Content-Type": "application/json"},
+                "body": JSON.stringify(embed)
+            })
+        } catch(err) {}
+    }
+    Silent == true ? null : console.log(`Keys remaining: ${Key.innerHTML.substr(-2).trim()}\nTime Remaining: ${Timer.innerHTML.substr(-10).trim()}\nUsers in: ${UsersIn.innerHTML.substr(-4).trim()} \nWatchers: ${Watchers.innerHTML.substr(-4).trim()}\n${LoggedIn} in raffle: ${InRaff}`)
 
 }, Timeout * 1000);
