@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         S&box Notifier
-// @namespace    https://raw.githubusercontent.com/DwifteJB/Sbox-Notifier/main/sbox-tampermonkey.js
-// @version      1.2
+// @namespace    https://github.com/DwifteJB/Sbox-Notifier
+// @version      1.2.1
 // @description  Notifies and Auto-Joins
 // @author       Dwifte
 // @match        *://asset.party/get/developer/preview
