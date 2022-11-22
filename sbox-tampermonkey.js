@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         S&box Notifier
 // @namespace    https://github.com/DwifteJB/Sbox-Notifier
-// @version      1.2.1
+// @version      1.3
 // @description  Notifies and Auto-Joins
 // @author       Dwifte
 // @match        *://asset.party/get/developer/preview
@@ -16,12 +16,15 @@
     'use strict';
     let Timeout = 3 // seconds
     let Silent = false
-    
-    let DiscordWebhook = null
-        
+    let savedTime
+    let DiscordWebhook = "https://discord.com/api/webhooks/1044388400062537808/5neD11H8a2xI-R7aB16fiH6_OWZZT89vP_K3RN2yFzO_qFgXSyB-j98tIUoNt6jJjZ5i"
+
     let LoggedAvatar = document.getElementsByClassName("avatar")[0].src
     let LoggedIn = document.getElementsByClassName("username")[0].innerHTML
     Silent == true ? null : console.log(`S&Box Notifier\n\nWelcome ${LoggedIn}!\nCreated by Dwifte`);
+    /*setTimeout(() => {
+        location.reload()
+    },3600000)*/
     setInterval(() => {
         let Enter = document.getElementsByClassName("button is-large is-primary")[0]
         let Users = document.getElementsByClassName("is-flex is-wrap")[0]
@@ -40,10 +43,13 @@
             }
         }
         if (InRaff == false) {
-            if (Math.random() < 0.5) { // random-ness, so it doesn't seem like a bot
+            if (Math.random() < 0.8) { // random-ness, so it doesn't seem like a bot
                 Enter.click();
             }
 
+        }
+        if (Timer.innerHTML.substr(-10).trim() == savedTime) {
+            location.reload();
         }
         if (DiscordWebhook != null) {
             try {
@@ -100,6 +106,7 @@
                 })
             } catch(err) {}
         }
-        Silent == true ? null : console.log(`Keys remaining: ${Key.innerHTML.substr(-2).trim()}\nTime Remaining: ${Timer.innerHTML.substr(-10).trim()}\nUsers in: ${UsersIn.innerHTML.substr(-4).trim()} \nWatchers: ${Watchers.innerHTML.substr(-4).trim()}\n${LoggedIn} in raffle: ${InRaff}`)
+        Silent == true ? null : console.log(`Keys remaining: ${Key.innerHTML.substr(-2).trim()}\nTime Remaining: ${Timer.innerHTML.substr(-10).trim()}\nUsers in: ${UsersIn.innerHTML.substr(-4).trim()} \nWatchers: ${Watchers.innerHTML.substr(-4).trim()}\n${LoggedIn} in raffle: ${InRaff}`);
+        savedTime = Timer.innerHTML.substr(-10).trim()
     }, Timeout * 1000);
 })();
