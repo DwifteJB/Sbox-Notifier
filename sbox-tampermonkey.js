@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         S&box Notifier
 // @namespace    https://github.com/DwifteJB/Sbox-Notifier
-// @version      1.3
+// @version      1.3.1
 // @description  Notifies and Auto-Joins
 // @author       Dwifte
 // @match        *://asset.party/get/developer/preview
@@ -70,7 +70,7 @@
                                 },
                                 {
                                     "name": "Time Remaining",
-                                    "value": Timer.innerHTML.substr(-10).trim(),
+                                    "value": Timer.innerHTML.split("</i> ")[1],
                                     "inline": true
                                 },
                                 {
@@ -106,7 +106,7 @@
                 })
             } catch(err) {}
         }
-        Silent == true ? null : console.log(`Keys remaining: ${Key.innerHTML.substr(-2).trim()}\nTime Remaining: ${Timer.innerHTML.substr(-10).trim()}\nUsers in: ${UsersIn.innerHTML.substr(-4).trim()} \nWatchers: ${Watchers.innerHTML.substr(-4).trim()}\n${LoggedIn} in raffle: ${InRaff}`);
-        savedTime = Timer.innerHTML.substr(-10).trim()
+        Silent == true ? null : console.log(`Keys remaining: ${Key.innerHTML.substr(-2).trim()}\nTime Remaining: ${Timer.innerHTML.split("</i> ")[1]}\nUsers in: ${UsersIn.innerHTML.substr(-4).trim()} \nWatchers: ${Watchers.innerHTML.substr(-4).trim()}\n${LoggedIn} in raffle: ${InRaff}`);
+        savedTime = Timer.innerHTML.split("</i> ")[1]
     }, Timeout * 1000);
 })();
