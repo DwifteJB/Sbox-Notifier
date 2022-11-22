@@ -17,7 +17,7 @@
     let Timeout = 3 // seconds
     let Silent = false
     let savedTime
-    let DiscordWebhook = "https://discord.com/api/webhooks/1044388400062537808/5neD11H8a2xI-R7aB16fiH6_OWZZT89vP_K3RN2yFzO_qFgXSyB-j98tIUoNt6jJjZ5i"
+    let DiscordWebhook = null
 
     let LoggedAvatar = document.getElementsByClassName("avatar")[0].src
     let LoggedIn = document.getElementsByClassName("username")[0].innerHTML
